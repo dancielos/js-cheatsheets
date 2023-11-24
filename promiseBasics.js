@@ -27,13 +27,19 @@ function getSomething() {
 }
 
 // For the RECEIVER:
+function format(data) {
+	return `--${data}--`;
+}
+
 getSomething()
 	.then((data) => {
-		// called when successful
-		console.log(data);
+		console.log(data); // when successful
+		return format(data);
+		// to chain, ALWAYS return a value
 	})
+	.then(console.log)
 	.catch((err) => {
-		//invoked if NOT successful
+		// if NOT successful
 		console.error(`ERROR: ${err}`);
 	});
 
